@@ -265,6 +265,10 @@ def main():
         print('Begin to unfollow users...')
 
         for user in unfollow_users_list:
+            if "e" not in user['username']:
+                print('Skipping - Username contains an e{}...'.format(user['username']))
+                continue
+                
             if not os.environ.get('UNFOLLOW_VERIFIED') and user['is_verified'] == True:
                 print('Skipping {}...'.format(user['username']))
                 continue
