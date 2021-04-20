@@ -256,7 +256,8 @@ def main():
 
     followers_usernames = {user['username'] for user in followers_list}
     unfollow_users_list = [user for user in following_list if user['username'] not in followers_usernames]
-
+    whitelist = "eyefeel_creative, smallbatchcr, the_girl_in_the_cafe, theinstituteofcoffee_, alveussanctuary, itzy.all.in.us, twicetagram, 39daph, emiru.jpg, hachubbytv, maya_higa, ly_keane, jadethirlwall, pokimanelol, kristenanniebell"
+    
     print('you are following {} user(s) who aren\'t following you:'.format(len(unfollow_users_list)))
     for user in unfollow_users_list:
         print(user['username'])
@@ -265,8 +266,8 @@ def main():
         print('Begin to unfollow users...')
 
         for user in unfollow_users_list:
-            if 'y' not in user['username']:
-                print('Skipping - Username does not contain a y{}...'.format(user['username']))
+            if '{}'.format(user['username']) in whitelist:
+                print('Skipping - Username is on whitelist {}...'.format(user['username']))
                 continue
             
             elif not os.environ.get('UNFOLLOW_VERIFIED') and user['is_verified'] == True:
