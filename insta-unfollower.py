@@ -256,7 +256,7 @@ def main():
 
     followers_usernames = {user['username'] for user in followers_list}
     unfollow_users_list = [user for user in following_list if user['username'] not in followers_usernames]
-    whitelist = "eyefeel_creative, smallbatchcr, the_girl_in_the_cafe, theinstituteofcoffee_, alveussanctuary, itzy.all.in.us, twicetagram, 39daph, emiru.jpg, hachubbytv, maya_higa, ly_keane, jadethirlwall, pokimanelol, kristenanniebell"
+    whitelist = "smallbatchcr, the_girl_in_the_cafe, theinstituteofcoffee_, alveussanctuary, itzy.all.in.us, twicetagram, 39daph, emiru.jpg, hachubbytv, maya_higa, ly_keane, jadethirlwall, pokimanelol, kristenanniebell"
     
     print('you are following {} user(s) who aren\'t following you:'.format(len(unfollow_users_list)))
     for user in unfollow_users_list:
@@ -278,7 +278,7 @@ def main():
 
             print('Unfollowing {}...'.format(user['username']))
             while unfollow(user) == False:
-                time.sleep(random.randint(1, 3) * 1000) # High number on purpose
+                time.sleep(random.randint(10, 20) * 1000) # High number on purpose
 
         print(' done')
 
